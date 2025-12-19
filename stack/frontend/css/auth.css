@@ -1,0 +1,130 @@
+/* ================================================================
+   AUTH SECTION - PLAYFUL LOGIN PAGE
+   ================================================================ */
+
+.auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-lg);
+}
+
+/* Animated Background */
+.auth-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.15) 0%, transparent 50%);
+  animation: gradientShift 8s ease infinite;
+  pointer-events: none;
+}
+
+/* Floating elements */
+.auth-section::after {
+  content: "✨ 🎯 ✨ 🎨 ✨ 🚀 ✨ 🌟 ✨ 💡 ✨";
+  position: absolute;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  font-size: 4rem;
+  white-space: nowrap;
+  animation: float 15s ease-in-out infinite;
+  opacity: 0.1;
+  pointer-events: none;
+  letter-spacing: var(--spacing-lg);
+}
+
+.auth-container {
+  position: relative;
+  z-index: 10;
+  background: var(--bg-light);
+  padding: var(--spacing-2xl);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-2xl);
+  max-width: 500px;
+  width: 100%;
+  animation: slideInUp var(--transition-slow);
+  text-align: center;
+}
+
+.auth-container h1 {
+  font-size: 2.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 800;
+  animation: scaleIn var(--transition-slow);
+}
+
+.auth-container h1::before {
+  content: "✨";
+  display: block;
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  animation: bounce var(--transition-slow) ease infinite;
+}
+
+.auth-container p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-2xl);
+  animation: slideInUp calc(var(--transition-slow) * 1.5);
+}
+
+#login-btn {
+  width: 100%;
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  font-size: 1.1rem;
+  animation: slideInUp calc(var(--transition-slow) * 2);
+}
+
+#login-btn:hover {
+  animation: glow var(--transition-slow) ease infinite;
+}
+
+/* Responsive Auth */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: var(--spacing-xl);
+    max-width: 90%;
+  }
+
+  .auth-container h1 {
+    font-size: 2rem;
+  }
+
+  .auth-section::after {
+    font-size: 2rem;
+    top: 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: var(--spacing-lg);
+  }
+
+  .auth-container h1 {
+    font-size: 1.75rem;
+  }
+
+  .auth-container p {
+    font-size: 1rem;
+  }
+
+  #login-btn {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1rem;
+  }
+}

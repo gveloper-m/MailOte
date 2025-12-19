@@ -1,0 +1,636 @@
+/* ================================================================
+   ATTACHMENTS SECTION - BEAUTIFUL FILE DISPLAY
+   ================================================================ */
+
+.attachments-container {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  animation: slideInUp var(--transition-base);
+  position: relative;
+}
+
+.attachment-card {
+  background: var(--bg-light);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideInUp var(--transition-base);
+  height: 100%;
+  min-height: 200px;
+}
+
+.attachment-card:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.attachment-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  animation: none;
+  transition: all var(--transition-base);
+  pointer-events: none;
+}
+
+.attachment-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), var(--shadow-lg);
+  transform: translateY(-8px);
+}
+
+.attachment-card:hover::before {
+  top: -20%;
+  left: -20%;
+}
+
+.attachment-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+  animation: bounce var(--transition-slow) ease infinite;
+}
+
+.attachment-name {
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+  word-break: break-word;
+  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.attachment-email {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  overflow: hidden;
+  background: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  animation: slideInUp var(--transition-base);
+}
+
+.attachment-email .view-attachment-btn {
+  align-self: flex-start;
+  margin-top: var(--spacing-md);
+}
+
+.attachment-info {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--bg-light-tertiary);
+  border-radius: var(--radius-md);
+  margin: var(--spacing-md) 0;
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.attachment-size {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.attachment-date {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-left: auto;
+}
+
+.attachment-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+}
+
+.attachment-btn {
+  flex: 1;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-light);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: 0.875rem;
+}
+
+.attachment-btn:hover {
+  border-color: var(--primary);
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.attachment-btn.download {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.attachment-btn.download:hover {
+  background-color: var(--success);
+  color: white;
+  border-color: var(--success);
+}
+
+.attachment-btn.view {
+  border-color: var(--info);
+  color: var(--info);
+}
+
+.attachment-btn.view:hover {
+  background-color: var(--info);
+  color: white;
+  border-color: var(--info);
+}
+
+/* ================================================================
+   FILE TYPE ICONS & COLORS
+   ================================================================ */
+
+.file-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.file-icon.pdf {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.file-icon.image {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+  color: white;
+}
+
+.file-icon.document {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+}
+
+.file-icon.spreadsheet {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.file-icon.archive {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+.file-icon.video {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+  color: white;
+}
+
+.file-icon.audio {
+  background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+  color: white;
+}
+
+.file-icon.default {
+  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  color: white;
+}
+
+/* ================================================================
+   SENDERS SECTION
+   ================================================================ */
+
+.senders-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  animation: slideInUp var(--transition-base);
+}
+
+.sender-card {
+  background: var(--bg-light);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp var(--transition-base);
+}
+
+.sender-card:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.2), var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.sender-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--gradient-secondary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+  animation: float var(--transition-slow) ease-in-out infinite;
+}
+
+.sender-name {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.sender-email {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-lg);
+  word-break: break-all;
+}
+
+.sender-stats {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--bg-light-tertiary);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.sender-stat {
+  flex: 1;
+  text-align: center;
+}
+
+.sender-stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sender-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: var(--spacing-xs);
+}
+
+.sender-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.sender-action-btn {
+  flex: 1;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-light);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.sender-action-btn:hover {
+  background: var(--gradient-primary);
+  border-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.sender-action-btn.delete:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border-color: var(--warning);
+}
+
+/* ================================================================
+   RESPONSIVE ATTACHMENTS & SENDERS
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .attachments-container,
+  .senders-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+  }
+
+  .attachment-card,
+  .sender-card {
+    padding: var(--spacing-md);
+  }
+
+  .file-icon,
+  .sender-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .attachment-actions,
+  .sender-actions {
+    flex-direction: column;
+  }
+
+  .attachment-btn,
+  .sender-action-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .attachments-container,
+  .senders-container {
+    grid-template-columns: 1fr;
+  }
+
+  .attachment-card,
+  .sender-card {
+    padding: var(--spacing-md);
+  }
+
+  .attachment-name,
+  .sender-name {
+    font-size: 1rem;
+  }
+
+  .file-icon,
+  .sender-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+
+  .attachment-actions,
+  .sender-actions {
+    flex-direction: column;
+  }
+
+  .attachment-btn,
+  .sender-action-btn {
+    width: 100%;
+    font-size: 0.875rem;
+  }
+}
+
+/* ================================================================
+   UNSUBSCRIBE SECTION
+   ================================================================ */
+
+.unsubscribe-controls {
+  background: var(--bg-light);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  animation: slideInUp var(--transition-base);
+}
+
+.unsubscribe-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  animation: slideInUp var(--transition-base);
+  max-height: 600px;
+  overflow-y: auto;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+
+.unsubscribe-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.unsubscribe-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.unsubscribe-list::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+  transition: background var(--transition-base);
+}
+
+.unsubscribe-list::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+.unsubscribe-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  background: var(--bg-light);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+}
+
+.unsubscribe-item:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.unsubscribe-item input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.select-all-label {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--bg-light-secondary);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.select-all-label:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.email-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.email-info strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.email-subject {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.unsubscribe-link-container {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.unsubscribe-link-container a,
+.no-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.no-link {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* ================================================================
+   STATISTICS SECTION
+   ================================================================ */
+
+.statistics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  animation: slideInUp var(--transition-base);
+}
+
+.stat-card {
+  background: var(--bg-light);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp var(--transition-base);
+}
+
+.stat-card:hover {
+  border-color: var(--info);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================================
+   EXPORT SECTION
+   ================================================================ */
+
+.export-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  animation: slideInUp var(--transition-base);
+}
+
+.progress {
+  background: var(--bg-light);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  animation: slideInUp var(--transition-base);
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: var(--bg-light-tertiary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+}
+
+.progress-bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--gradient-success);
+  animation: widthIncrease 3s ease-in-out infinite;
+}
+
+@keyframes widthIncrease {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+#progress-text {
+  color: var(--text-light);
+  font-weight: 600;
+}

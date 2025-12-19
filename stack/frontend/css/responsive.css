@@ -1,0 +1,559 @@
+/* ================================================================
+   ENHANCED RESPONSIVE BREAKPOINTS & ANIMATIONS
+   ================================================================ */
+
+/* Extra Small Devices (Smartwatches) */
+@media (max-width: 360px) {
+  .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    min-height: 40px;
+  }
+
+  .section {
+    padding: 0.75rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .controls {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    padding: 0.5rem;
+    font-size: 14px;
+  }
+}
+
+/* Small Devices (480px - 640px) */
+@media (min-width: 361px) and (max-width: 640px) {
+  :root {
+    --spacing-md: 0.75rem;
+    --spacing-lg: 1rem;
+  }
+
+  .navbar {
+    padding: 0.75rem;
+  }
+
+  .attachment-card,
+  .sender-card {
+    padding: 0.75rem;
+  }
+
+  .file-icon,
+  .sender-avatar {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
+}
+
+/* Medium Devices (Tablets) (641px - 768px) */
+@media (min-width: 641px) and (max-width: 768px) {
+  .attachments-container,
+  .senders-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statistics-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-header {
+    flex-direction: row;
+  }
+
+  .controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .controls input {
+    max-width: 120px;
+  }
+}
+
+/* Large Devices (Desktop) (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .attachments-container,
+  .senders-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .statistics-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sidebar {
+    width: 250px;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Extra Large Devices (1025px+) */
+@media (min-width: 1025px) {
+  .senders-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .statistics-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .sidebar {
+    width: 300px;
+  }
+
+  .controls {
+    gap: 1rem;
+  }
+
+  .controls input {
+    min-width: 180px;
+  }
+}
+
+/* Ultra-wide Displays (1440px+) */
+@media (min-width: 1440px) {
+  .attachments-container,
+  .senders-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .statistics-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .main-content {
+    margin: 0 auto;
+  }
+}
+
+/* ================================================================
+   LANDSCAPE MODE (Tablets & Phones)
+   ================================================================ */
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .section {
+    padding: 0.75rem 1rem;
+    max-height: calc(100vh - 80px);
+  }
+
+  .section-header {
+    margin-bottom: 0.75rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    padding: 0.5rem;
+  }
+
+  .controls {
+    gap: 0.5rem;
+  }
+
+  .attachment-card,
+  .email-card {
+    padding: 0.75rem;
+  }
+
+  .theme-toggle {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+}
+
+/* ================================================================
+   PRINT STYLES
+   ================================================================ */
+
+@media print {
+  .navbar,
+  .sidebar,
+  .controls,
+  .theme-toggle,
+  .menu-toggle,
+  .btn.logout,
+  .email-actions,
+  .attachment-actions,
+  .sender-actions {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+
+  .email-card,
+  .attachment-card,
+  .sender-card,
+  .deleted-card {
+    page-break-inside: avoid;
+    border: 1px solid #000;
+    box-shadow: none;
+    padding: 1rem;
+  }
+
+  .btn,
+  button {
+    border: 1px solid #000;
+  }
+}
+
+/* ================================================================
+   HIGH CONTRAST MODE (Accessibility)
+   ================================================================ */
+
+@media (prefers-contrast: more) {
+  :root {
+    --primary: #0033cc;
+    --secondary: #cc0066;
+    --warning: #cc0000;
+    --success: #006600;
+    --border-light: #000;
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+    font-weight: 700;
+  }
+
+  input,
+  textarea,
+  select {
+    border-width: 3px;
+  }
+}
+
+/* ================================================================
+   REDUCED MOTION (Accessibility)
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ================================================================
+   FOCUS VISIBLE STYLES (Keyboard Navigation)
+   ================================================================ */
+
+.btn:focus-visible,
+.nav-link:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ================================================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ================================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  input,
+  textarea,
+  select {
+    min-height: 48px;
+  }
+
+  .email-card,
+  .attachment-card,
+  .sender-card {
+    padding: var(--spacing-lg);
+  }
+
+  .email-action-btn,
+  .attachment-btn {
+    padding: 0.75rem;
+    font-size: 1.2rem;
+  }
+
+  .nav-link {
+    padding: 1rem;
+  }
+
+  /* Remove hover states */
+  .btn:hover {
+    transform: none;
+  }
+
+  .email-card:hover {
+    transform: none;
+  }
+
+  /* Add active state feedback */
+  .btn:active {
+    opacity: 0.7;
+  }
+
+  .nav-link:active {
+    background-color: var(--bg-light-secondary);
+  }
+}
+
+/* ================================================================
+   DYNAMIC COLOR SCHEMES (Extended Dark Mode)
+   ================================================================ */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color-scheme: light;
+  }
+}
+
+/* ================================================================
+   SMOOTH SCROLLING
+   ================================================================ */
+
+html.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* ================================================================
+   CUSTOM SELECTION COLOR
+   ================================================================ */
+
+::selection {
+  background: var(--primary);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: white;
+}
+
+/* ================================================================
+   FLOATING ACTION BUTTONS (FAB)
+   ================================================================ */
+
+.fab {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-base);
+  z-index: 99;
+}
+
+.fab:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-2xl);
+}
+
+.fab:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .fab {
+    width: 56px;
+    height: 56px;
+    font-size: 1.3rem;
+  }
+}
+
+/* ================================================================
+   MODAL & OVERLAY STYLES
+   ================================================================ */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn var(--transition-base);
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-light);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-2xl);
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-2xl);
+  animation: scaleIn var(--transition-base);
+}
+
+.modal-close {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: all var(--transition-base);
+}
+
+.modal-close:hover {
+  color: var(--text-dark);
+  transform: scale(1.2);
+}
+
+/* ================================================================
+   SKELETON LOADING ANIMATION
+   ================================================================ */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-light-tertiary) 0%,
+    var(--bg-light-secondary) 50%,
+    var(--bg-light-tertiary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ================================================================
+   BADGE STYLES
+   ================================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-primary {
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--primary);
+}
+
+.badge-success {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+}
+
+.badge-warning {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--warning);
+}
+
+.badge-info {
+  background: rgba(6, 182, 212, 0.2);
+  color: var(--info);
+}
+
+/* ================================================================
+   SPACING UTILITIES
+   ================================================================ */
+
+.mt { margin-top: var(--spacing-md); }
+.mb { margin-bottom: var(--spacing-md); }
+.mx { margin-left: var(--spacing-md); margin-right: var(--spacing-md); }
+.my { margin-top: var(--spacing-md); margin-bottom: var(--spacing-md); }
+.p { padding: var(--spacing-md); }
+.pt { padding-top: var(--spacing-md); }
+.pb { padding-bottom: var(--spacing-md); }
+.px { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
+.py { padding-top: var(--spacing-md); padding-bottom: var(--spacing-md); }
+
+/* ================================================================
+   FLEX & GRID UTILITIES
+   ================================================================ */
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-center { align-items: center; justify-content: center; }
+.gap { gap: var(--spacing-md); }
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ================================================================
+   TEXT UTILITIES
+   ================================================================ */
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+
+@media (max-width: 768px) {
+  .hidden-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .hidden-desktop { display: none !important; }
+}

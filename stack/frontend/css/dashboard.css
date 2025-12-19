@@ -1,0 +1,310 @@
+/* ================================================================
+   DASHBOARD - MAIN APPLICATION LAYOUT
+   ================================================================ */
+
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+}
+
+.navbar {
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ================================================================
+   SIDEBAR NAVIGATION
+   ================================================================ */
+
+.sidebar {
+  width: 280px;
+  background: var(--bg-light-secondary);
+  border-right: 2px solid var(--border-light);
+  overflow-y: auto;
+  transition: all var(--transition-base);
+  animation: slideInLeft var(--transition-base);
+  position: relative;
+  z-index: 50;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+  transition: background var(--transition-base);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: var(--spacing-lg) 0;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  margin: 0 var(--spacing-sm);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--transition-base);
+  border-radius: 0 2px 2px 0;
+}
+
+.nav-link:hover {
+  background-color: var(--bg-light);
+  color: var(--primary);
+  padding-left: var(--spacing-xl);
+}
+
+.nav-link:hover::before {
+  transform: scaleY(1);
+}
+
+.nav-link.active {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, transparent 100%);
+  color: var(--primary);
+  padding-left: var(--spacing-xl);
+}
+
+.nav-link.active::before {
+  transform: scaleY(1);
+}
+
+/* Icon for nav links */
+.nav-link::after {
+  content: "→";
+  margin-left: auto;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all var(--transition-base);
+}
+
+.nav-link:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================================================================
+   SECTION LAYOUT
+   ================================================================ */
+
+.section {
+  padding: var(--spacing-xl);
+  animation: slideInUp var(--transition-base);
+  opacity: 0;
+  pointer-events: none;
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  transition: opacity var(--transition-base) ease-in-out, visibility var(--transition-base) ease-in-out;
+  visibility: hidden;
+  display: none;
+}
+
+.section.active {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  display: block;
+}
+
+.section.hidden {
+  display: none !important;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  animation: slideInLeft var(--transition-base);
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  align-items: center;
+  animation: slideInRight var(--transition-base);
+}
+
+.controls input {
+  max-width: 150px;
+}
+
+.controls button {
+  min-width: 150px;
+}
+
+/* ================================================================
+   RESPONSIVE SIDEBAR
+   ================================================================ */
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: var(--spacing-md);
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    height: 100vh;
+    top: 0;
+    z-index: 99;
+    max-height: 100vh;
+    transition: left var(--transition-base);
+    box-shadow: var(--shadow-2xl);
+  }
+
+  .sidebar.open {
+    left: 0;
+        display: flex
+;
+        justify-content: center;  
+}
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .dashboard-section {
+    position: relative;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .section {
+    padding: var(--spacing-lg);
+  }
+
+  .section-header {
+    flex-direction: column;
+  }
+
+  .controls {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .controls input,
+  .controls button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    left: -100%;
+  }
+
+  .section {
+    padding: var(--spacing-md);
+  }
+
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .controls {
+    gap: var(--spacing-sm);
+  }
+}
+
+/* ================================================================
+   MODERN ONE-PAGE EXPERIENCE
+   ================================================================ */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  position: relative;
+  flex: 1;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}

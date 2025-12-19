@@ -1,0 +1,494 @@
+/* ================================================================
+   MODAL STYLES - SIDE PANEL APPEARANCE
+   ================================================================ */
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 500;
+  display: flex !important;
+  align-items: flex-start;
+  justify-content: flex-end;
+  animation: fadeIn var(--transition-base);
+  backdrop-filter: blur(2px);
+  overflow: hidden;
+  padding-top: 0;
+  visibility: visible !important;
+}
+
+.modal.hidden {
+  display: none !important;
+}
+
+.modal-content {
+  background: var(--bg-light);
+  width: 90%;
+  max-width: 600px;
+  height: 100%;
+  max-height: none;
+  overflow-y: auto;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+  animation: slideInRight var(--transition-base);
+  border-radius: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  z-index: 501;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 2px solid var(--border-light);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  word-break: break-word;
+}
+
+.modal-body {
+  flex: 1;
+  padding: var(--spacing-xl);
+  overflow-y: auto;
+  background: var(--bg-light);
+}
+
+.modal-body .email-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.modal-body p {
+  margin: 0;
+  color: var(--text-dark);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.modal-body p strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.modal-body hr {
+  border: none;
+  border-top: 2px solid var(--border-light);
+  margin: var(--spacing-lg) 0;
+}
+
+.email-body {
+  background: var(--bg-light-secondary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 0.85rem;
+  word-break: break-word;
+  white-space: pre-wrap;
+  border: 1px solid var(--border-light);
+}
+
+.modal-close,
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text-light);
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  border-radius: var(--radius-md);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.modal-close:focus-visible,
+.btn-close:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  background: var(--bg-light-secondary);
+}
+
+.modal-close:hover,
+.btn-close:hover {
+  background-color: var(--bg-light-secondary);
+  color: var(--primary);
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* ================================================================
+   NO-DATA / EMPTY STATE
+   ================================================================ */
+
+.no-data {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-light);
+  font-size: 1.1rem;
+  background: var(--bg-light-secondary);
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--border-light);
+}
+
+/* ================================================================
+   RESPONSIVE MODAL
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .modal-header {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .modal-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .modal-body {
+    padding: var(--spacing-lg);
+  }
+
+  .modal-close,
+  .btn-close {
+    width: 45px;
+    height: 45px;
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 100%;
+    padding: 0;
+  }
+
+  .modal-header {
+    padding: var(--spacing-md);
+  }
+
+  .modal-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .modal-body {
+    padding: var(--spacing-md);
+  }
+
+  .modal-body .email-details {
+    gap: var(--spacing-md);
+  }
+
+  .modal-body p {
+    font-size: 0.9rem;
+  }
+
+  .email-body {
+    padding: var(--spacing-md);
+    font-size: 0.875rem;
+  }
+
+  .modal-close,
+  .btn-close {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+/* ================================================================
+   MODAL LOADING STATE
+   ================================================================ */
+
+.modal.loading .modal-body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  animation: widthIncrease 2s ease-in-out infinite;
+}
+
+/* ================================================================
+   EMAIL DETAILS IN MODAL
+   ================================================================ */
+
+.email-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.email-details p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.email-details strong {
+  min-width: 80px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.email-details strong::after {
+  content: ":";
+}
+
+/* ================================================================
+   SCROLLBAR IN MODAL
+   ================================================================ */
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: var(--bg-light-secondary);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
+  transition: background var(--transition-base);
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: var(--bg-light-secondary);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* Firefox */
+.modal-content {
+  scrollbar-color: var(--border-light) var(--bg-light-secondary);
+  scrollbar-width: thin;
+}
+
+.modal-body {
+  scrollbar-color: var(--border-light) var(--bg-light-secondary);
+  scrollbar-width: thin;
+}
+
+/* ================================================================
+   ANIMATIONS
+   ================================================================ */
+
+@keyframes slideInRightLarge {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRightLarge {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.modal-content.closing {
+  animation: slideOutRightLarge var(--transition-base) ease-out forwards;
+}
+
+@keyframes fadeInBackdrop {
+  from {
+    backdrop-filter: blur(0px);
+  }
+  to {
+    backdrop-filter: blur(2px);
+  }
+}
+
+.modal {
+  animation: fadeIn var(--transition-base), fadeInBackdrop var(--transition-base);
+}
+
+/* ================================================================
+   UTILITY STYLES
+   ================================================================ */
+
+.modal-button-group {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-light);
+}
+
+.modal-button-group .btn {
+  flex: 1;
+}
+
+.modal-header-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-top: var(--spacing-xs);
+}
+
+.modal-section-divider {
+  height: 2px;
+  background: var(--gradient-primary);
+  margin: var(--spacing-lg) 0;
+  border-radius: 1px;
+}
+
+/* ================================================================
+   ACCESSIBILITY
+   ================================================================ */
+
+.modal:focus-within {
+  outline: none;
+}
+
+.modal-close:focus-visible,
+.btn-close:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ================================================================
+   PRINT STYLES
+   ================================================================ */
+
+@media print {
+  .modal {
+    position: static;
+    background: white;
+    backdrop-filter: none;
+  }
+
+  .modal-content {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .modal-header {
+    border-bottom: 2px solid #000;
+    page-break-inside: avoid;
+  }
+
+  .modal-close,
+  .btn-close {
+    display: none;
+  }
+}
+
+/* ================================================================
+   PROGRESS MODAL STYLES
+   ================================================================ */
+
+#unsubscribe-progress-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+#unsubscribe-progress-modal.active {
+  display: flex !important;
+  visibility: visible !important;
+}
+
+#unsubscribe-progress-modal .modal-content {
+  position: fixed;
+  width: 400px;
+  max-width: 90%;
+  height: auto;
+  max-height: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#unsubscribe-progress-modal .modal-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+#unsubscribe-progress-modal .modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+#unsubscribe-progress-modal .modal-body {
+  padding: 20px;
+}
+

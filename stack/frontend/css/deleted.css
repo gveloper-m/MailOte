@@ -1,0 +1,306 @@
+/* ================================================================
+   DELETED EMAILS SECTION
+   ================================================================ */
+
+.deleted-container {
+  display: grid;
+  gap: var(--spacing-lg);
+  animation: slideInUp var(--transition-base);
+}
+
+.deleted-card {
+  background: var(--bg-light);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp var(--transition-base);
+  opacity: 0.8;
+}
+
+.deleted-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--warning);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-base);
+}
+
+.deleted-card:hover {
+  border-color: var(--warning);
+  box-shadow: 0 0 0 1px var(--warning), var(--shadow-lg);
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+.deleted-card:hover::before {
+  transform: scaleX(1);
+}
+
+.deleted-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.deleted-from {
+  flex: 1;
+}
+
+.deleted-from-name {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.deleted-from-address {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.deleted-date {
+  font-size: 0.875rem;
+  color: var(--text-lighter);
+  white-space: nowrap;
+}
+
+.deleted-subject {
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-md);
+  font-size: 1rem;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.deleted-preview {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+.deleted-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--warning);
+  animation: slideInRight var(--transition-base);
+}
+
+.deleted-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-light);
+}
+
+.delete-restore-btn {
+  flex: 1;
+  padding: var(--spacing-md);
+  border: 2px solid var(--success);
+  background-color: var(--bg-light);
+  color: var(--success);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.delete-restore-btn:hover {
+  background-color: var(--success);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.delete-permanent-btn {
+  flex: 1;
+  padding: var(--spacing-md);
+  border: 2px solid var(--warning);
+  background-color: var(--bg-light);
+  color: var(--warning);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.delete-permanent-btn:hover {
+  background-color: var(--warning);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ================================================================
+   DARK MODE TOGGLE
+   ================================================================ */
+
+.theme-toggle {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+  font-size: 1.75rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideInUp calc(var(--transition-slow) * 1.5);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-2xl);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle-spinner {
+  animation: spin 0.5s ease-in-out;
+}
+
+/* ================================================================
+   RESPONSIVE DELETED
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .deleted-card {
+    padding: var(--spacing-md);
+  }
+
+  .deleted-header {
+    flex-direction: column;
+  }
+
+  .deleted-date {
+    align-self: flex-start;
+  }
+
+  .deleted-actions {
+    flex-direction: column;
+  }
+
+  .delete-restore-btn,
+  .delete-permanent-btn {
+    width: 100%;
+  }
+
+  .theme-toggle {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .deleted-container {
+    gap: var(--spacing-md);
+  }
+
+  .deleted-card {
+    padding: var(--spacing-md);
+  }
+
+  .deleted-from-name {
+    font-size: 1rem;
+  }
+
+  .deleted-subject {
+    font-size: 0.95rem;
+  }
+
+  .deleted-preview {
+    -webkit-line-clamp: 1;
+    font-size: 0.875rem;
+  }
+
+  .deleted-actions {
+    flex-direction: column;
+  }
+
+  .theme-toggle {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+  }
+}
+
+/* ================================================================
+   SCROLLBAR STYLING
+   ================================================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-light-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 5px;
+  transition: background var(--transition-base);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Firefox */
+* {
+  scrollbar-color: var(--primary-light) var(--bg-light-secondary);
+  scrollbar-width: thin;
+}
+
+/* ================================================================
+   GLOBAL DARK MODE ADJUSTMENTS
+   ================================================================ */
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-dark-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
